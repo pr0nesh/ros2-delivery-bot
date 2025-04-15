@@ -1,0 +1,111 @@
+<?xml version="1.0" ?>
+<robot name="amr" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find pranesh_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find pranesh_description)/urdf/pranesh.trans" />
+<xacro:include filename="$(find pranesh_description)/urdf/pranesh.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="-0.0013879412797589798 8.500169907586763e-18 -0.0007813620283936445" rpy="0 0 0"/>
+    <mass value="10.62598241873387"/>
+    <inertia ixx="0.052255" iyy="0.100118" izz="0.138697" ixy="-0.0" iyz="-0.0" ixz="1.8e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find pranesh_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find pranesh_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar_1">
+  <inertial>
+    <origin xyz="-2.7755575615628914e-17 -1.1297675401689179e-17 0.007724990058634355" rpy="0 0 0"/>
+    <mass value="0.032846065366265685"/>
+    <inertia ixx="2e-06" iyy="2e-06" izz="1e-06" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.1 0.0 -0.037505" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find pranesh_description)/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.1 0.0 -0.037505" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find pranesh_description)/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel_1">
+  <inertial>
+    <origin xyz="7.56637993952228e-17 0.007500000000000034 -1.6625305351454314e-07" rpy="0 0 0"/>
+    <mass value="0.9248063374004952"/>
+    <inertia ixx="0.000595" iyy="0.001156" izz="0.000595" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.1 -5e-06" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find pranesh_description)/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.1 -5e-06" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find pranesh_description)/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_wheel_1">
+  <inertial>
+    <origin xyz="7.56637993952228e-17 -0.007499999999999979 -1.662530536342738e-07" rpy="0 0 0"/>
+    <mass value="0.9248063374004952"/>
+    <inertia ixx="0.000595" iyy="0.001156" izz="0.000595" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 0.1 -5e-06" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find pranesh_description)/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 0.1 -5e-06" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find pranesh_description)/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="lidar_joint" type="fixed">
+  <origin xyz="0.1 0.0 0.037505" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="lidar_1"/>
+</joint>
+
+<joint name="left_wheel_joint" type="continuous">
+  <origin xyz="0.0 0.1 5e-06" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_wheel_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="right_wheel_joint" type="continuous">
+  <origin xyz="0.0 -0.1 5e-06" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_wheel_1"/>
+  <axis xyz="0.0 1.0 -0.0"/>
+</joint>
+
+</robot>
