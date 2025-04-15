@@ -1,0 +1,116 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="cafe_world">
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- Room boundary walls -->
+    <model name="wall_north">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>10 0.1 1</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>10 0.1 1</size></box></geometry>
+        </visual>
+        <pose>0 5 0.5 0 0 0</pose>
+      </link>
+    </model>
+
+    <model name="wall_south">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>10 0.1 1</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>10 0.1 1</size></box></geometry>
+        </visual>
+        <pose>0 -5 0.5 0 0 0</pose>
+      </link>
+    </model>
+
+    <model name="wall_east">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.1 10 1</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.1 10 1</size></box></geometry>
+        </visual>
+        <pose>5 0 0.5 0 0 0</pose>
+      </link>
+    </model>
+
+    <model name="wall_west">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.1 10 1</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.1 10 1</size></box></geometry>
+        </visual>
+        <pose>-5 0 0.5 0 0 0</pose>
+      </link>
+    </model>
+
+    <!-- Kitchen wall (top-left corner) -->
+    <model name="kitchen_wall">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>3 0.1 1</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>3 0.1 1</size></box></geometry>
+          <material><ambient>1 0.5 0 1</ambient></material>
+        </visual>
+        <pose>-3.5 3.5 0.5 0 0 0</pose>
+      </link>
+    </model>
+
+    <!-- Tables -->
+    <model name="table1">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry><cylinder><radius>0.3</radius><length>0.7</length></cylinder></geometry>
+          <material><ambient>0 1 0 1</ambient></material>
+        </visual>
+        <pose>2 2 0.35 0 0 0</pose>
+      </link>
+    </model>
+
+    <model name="table2">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry><cylinder><radius>0.3</radius><length>0.7</length></cylinder></geometry>
+          <material><ambient>0 1 0 1</ambient></material>
+        </visual>
+        <pose>0 2 0.35 0 0 0</pose>
+      </link>
+    </model>
+
+    <model name="table3">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry><cylinder><radius>0.3</radius><length>0.7</length></cylinder></geometry>
+          <material><ambient>0 1 0 1</ambient></material>
+        </visual>
+        <pose>-2 2 0.35 0 0 0</pose>
+      </link>
+    </model>
+
+  </world>
+</sdf>
