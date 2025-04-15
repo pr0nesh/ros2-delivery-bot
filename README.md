@@ -2,8 +2,9 @@
 "Autonomous food delivery simulation using TurtleBot3 and ROS 2 Nav2 in a custom Gazebo café environment."
 
 
+ Food Delivery with Nav2 in Custom Gazebo World 
 Project Overview
-This project implements a food delivery robot system using TurtleBot3 in a custom Gazebo environment. The robot navigates autonomously using the Nav2 stack and handles real-world delivery tasks such as:
+This project implements a food delivery robot system using a custom bot in a custom Gazebo environment. The robot navigates autonomously using the Nav2 stack and handles real-world delivery tasks such as:
 - Delivering to multiple tables
 - Receiving confirmation at delivery points
 - Canceling deliveries interactively
@@ -12,24 +13,24 @@ System Architecture
 1. Gazebo Simulation Setup
 The simulation uses a custom Gazebo world (my_world.world).
 
-Launch file: empty_world.launch.py  
+Launch file: world.launch.py  
 Responsibilities:
 - Launch gzserver and gzclient
-- Spawn the TurtleBot3 robot
+- Spawn the custom robot
 - Set initial position (x_pose, y_pose)
 - Launch robot_state_publisher
 2. Navigation Setup (Nav2)
-Launch file: navigation2.launch.py  
+Launch file: nav.launch.py  
 Initializes the Nav2 stack using:
 - Predefined map YAML file
-- Parameter file based on the TurtleBot3 model
+- Parameter file based on the model
 - RViz with default configuration
 
 Enables:
 - Global/local planning
 - Recovery behaviors
 - SLAM or localization
-3. Delivery Task Handling – nav.py
+3. Delivery Task Handling – robot1.py
 Defines a ROS2 Node named restaurant_robot using BasicNavigator from nav2_simple_commander.
 
 Features:
@@ -49,14 +50,13 @@ TABLE3:  {x: 4.0,  y: -1.3, theta: 0.0}
 
 Launch Instructions
 1. Launch Gazebo World:
-ros2 launch turtlebot3_gazebo empty_world.launch.py
+ros2 launch pranesh_description world.launch.py
 
 2. Launch Nav2:
-export TURTLEBOT3_MODEL=burger
-ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=true
+ros2 launch pranesh_description nav.launch.py use_sim_time:=true
 
 3. Run Delivery Script:
-ros2 run your_package_name nav.py
+ros2 run pranesh_description robot1.py
 Robot Commands
 Command
 Description
@@ -78,12 +78,13 @@ help
 Display available commands
 q
 Quit the program
+
 Flow Diagram (Simplified)
 
 START
   └──> Spawn in Custom Gazebo World
         └──> Nav2 Initializes (Map + Params)
-              └──> nav.py script starts
+              └──> robot1.py script starts
                     └──> Accept user command (t1, t2, ...)
                           ├──> Navigate to Kitchen
                           ├──> Confirm Pickup
@@ -96,10 +97,4 @@ Key Concepts Used
 - PoseStamped goals for movement
 - Threading for background initialization
 - Interactive CLI for user control
-- Custom world design in Gazebo
-
-
-
-
-Conclusion
-This assignment demonstrates a robust navigation and task-execution system using TurtleBot3 and Nav2. The robot simulates real-world café delivery behavior using ROS2 and Gazebo.
+- Custom world and Custom robot design in Gazebo
