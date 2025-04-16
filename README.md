@@ -1,5 +1,5 @@
 # ros2-delivery-bot
-"Autonomous food delivery simulation using TurtleBot3 and ROS 2 Nav2 in a custom Gazebo café environment."
+"Autonomous food delivery simulation using Custom Robot and ROS 2 Nav2 in a custom Gazebo café environment."
 
 
  Food Delivery with Nav2 in Custom Gazebo World 
